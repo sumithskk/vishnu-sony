@@ -578,6 +578,16 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 @keyframes wishPopIn{0%{opacity:0;transform:scale(0.82) translateY(14px)}55%{opacity:1;transform:scale(1.04) translateY(-3px);box-shadow:0 0 0 2px var(--gold)}100%{transform:scale(1) translateY(0);box-shadow:0 0 0 0 transparent}}
 @keyframes emojiBounceIn{0%{opacity:0;transform:scale(0) rotate(-15deg)}60%{opacity:1;transform:scale(1.3) rotate(8deg)}100%{transform:scale(1) rotate(0)}}
 .emoji-burst-particle{position:fixed;font-size:1.4rem;pointer-events:none;z-index:9999;left:0;top:0;animation:emojiFly 1100ms ease-out forwards}
+.emoji-rise-particle{position:fixed;pointer-events:none;z-index:9999;left:0;top:0;animation-name:emojiRise;animation-timing-function:ease-out;animation-fill-mode:forwards;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.15))}
+@keyframes emojiRise{
+  0%{opacity:0;transform:translateY(0) translateX(0) scale(0.5) rotate(0deg)}
+  10%{opacity:1}
+  25%{transform:translateY(-25vh) translateX(var(--sway)) scale(1) rotate(8deg)}
+  50%{transform:translateY(-52vh) translateX(0) scale(1.06) rotate(-8deg)}
+  75%{transform:translateY(-78vh) translateX(var(--sway)) scale(1) rotate(6deg)}
+  92%{opacity:1}
+  100%{opacity:0;transform:translateY(-104vh) translateX(0) scale(0.85) rotate(0deg)}
+}
 @keyframes emojiFly{0%{opacity:0;transform:translate(0,0) scale(0.5) rotate(0deg)}12%{opacity:1}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(1.15) rotate(var(--rot))}}
 .wish-name{font-family:var(--ff-head);font-size:0.92rem;color:var(--primary);margin-bottom:0.3rem;transition:font-family var(--dur),color var(--dur)}
 .wish-msg{font-family:var(--ff-ital);font-size:0.95rem;line-height:1.55;color:var(--ink);white-space:pre-wrap;word-break:break-word}
@@ -1715,6 +1725,16 @@ body.theme-western .cal-link{
   }
 }
 
+/* Bigger, easier-to-read date & time text (requested) */
+.chip{
+  font-size:1.15rem !important;
+  padding:0.5rem 1rem !important;
+}
+.tl-time{
+  font-size:1rem !important;
+  letter-spacing:0.08em !important;
+}
+
 </style>
 </head>
 <body class="theme-kerala">
@@ -1801,7 +1821,7 @@ body.theme-western .cal-link{
 <div class="venue-name" data-en="Kariyad CH Moidu Master Auditorium" data-ml="കരിയാട് സി എച്ച് മൊയ്തു മാസ്റ്റർ ഓഡിറ്റോറിയം">Kariyad CH Moidu Master Auditorium</div>
 <div class="venue-addr">Kariyad, Thalassery, Kannur</div>
 <div class="venue-actions">
-<a class="action-btn primary" href="https://maps.app.goo.gl/KFvJJLLNZR7aVkRXA" rel="noopener" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a>
+<a class="action-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Kariyad+CH+Moidu+Master+Auditorium,+Kariyad,+Thalassery,+Kannur" rel="noopener"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a>
 <button class="action-btn" onclick="copyText('Kariyad CH Moidu Master Auditorium, Kariyad, Thalassery, Kannur')"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg><span data-en="Copy address" data-ml="വിലാസം കോപ്പി">Copy address</span></button>
 <a class="cal-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20%E2%80%94%20Vishnu%20Kumar%20%26%20Sonya&amp;location=Kariyad%20CH%20Moidu%20Master%20Auditorium%2C%20Kariyad%2C%20Thalassery%2C%20Kannur&amp;dates=20261101T080000/20261101T150000" rel="noopener" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg><span data-en="Add to calendar" data-ml="കലണ്ടറിൽ ചേർക്കുക">Add to calendar</span></a>
 </div>
@@ -1812,8 +1832,8 @@ body.theme-western .cal-link{
 <button class="t-tab on" onclick="tab(this,'k-bus')"><span data-en="Bus" data-ml="ബസ്">Bus</span></button>
 <button class="t-tab" onclick="tab(this,'k-train')"><span data-en="Train" data-ml="ട്രെയിൻ">Train</span></button>
 </div>
-<div class="t-panel on" id="k-bus"><div class="t-text" data-en="From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue." data-ml="തലശ്ശേരിയിൽ നിന്ന്: കരിയാട് ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.<br/>വടകരയിൽ നിന്ന്: പെരിങ്ങത്തൂർ ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.">From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue.</div><a class="action-btn" href="https://maps.app.goo.gl/KFvJJLLNZR7aVkRXA" rel="noopener" target="_blank"><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a></div>
-<div class="t-panel" id="k-train"><div class="t-text" data-en="Nearest railway stations: Mahe, Thalassery, and Vadakara." data-ml="ഏറ്റവും അടുത്ത റെയിൽവേ സ്റ്റേഷനുകൾ: മാഹി, തലശ്ശേരി, വടകര.">Nearest railway stations: Mahe, Thalassery, and Vadakara.</div><a class="action-btn" href="https://maps.app.goo.gl/KFvJJLLNZR7aVkRXA" rel="noopener" target="_blank"><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a></div>
+<div class="t-panel on" id="k-bus"><div class="t-text" data-en="From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue." data-ml="തലശ്ശേരിയിൽ നിന്ന്: കരിയാട് ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.<br/>വടകരയിൽ നിന്ന്: പെരിങ്ങത്തൂർ ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.">From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue.</div><a class="action-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kariyad+CH+Moidu+Master+Auditorium,+Kariyad,+Thalassery,+Kannur" rel="noopener"><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a></div>
+<div class="t-panel" id="k-train"><div class="t-text" data-en="Nearest railway stations: Mahe, Thalassery, and Vadakara." data-ml="ഏറ്റവും അടുത്ത റെയിൽവേ സ്റ്റേഷനുകൾ: മാഹി, തലശ്ശേരി, വടകര.">Nearest railway stations: Mahe, Thalassery, and Vadakara.</div><a class="action-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kariyad+CH+Moidu+Master+Auditorium,+Kariyad,+Thalassery,+Kannur" rel="noopener"><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a></div>
 </div>
 </section>
 <hr class="section-divider"/>
@@ -2162,6 +2182,35 @@ function spawnEmojiBurst(originEl, count) {
   }
 }
 
+// Zoom-reaction style: a staggered stream of emojis floating up from near
+// the bottom of the screen, swaying gently, fading out before the top.
+const RISE_EMOJIS = ['❤️','💛','🌸','🌺','✨','🙏','💕','🌼'];
+function spawnEmojiRiseStream(originEl, count) {
+  if (!originEl) return;
+  const rect = originEl.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const n = count || 10;
+  const vh = window.innerHeight;
+  for (let i = 0; i < n; i++) {
+    const el = document.createElement('span');
+    el.className = 'emoji-rise-particle';
+    el.textContent = RISE_EMOJIS[Math.floor(Math.random() * RISE_EMOJIS.length)];
+    const spread = (Math.random() - 0.5) * 90; // horizontal spread of launch point
+    const sway = (Math.random() > 0.5 ? 1 : -1) * (18 + Math.random() * 24) + 'px';
+    const size = (1.3 + Math.random() * 0.9).toFixed(2) + 'rem';
+    const duration = (2600 + Math.random() * 1400).toFixed(0) + 'ms';
+    const delay = (Math.random() * 500).toFixed(0) + 'ms';
+    el.style.setProperty('--sway', sway);
+    el.style.left = (cx + spread) + 'px';
+    el.style.top = vh + 'px';
+    el.style.fontSize = size;
+    el.style.animationDuration = duration;
+    el.style.animationDelay = delay;
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
 function renderWishes(docs) {
   const list = document.getElementById('wishesList');
   if (!list) return;
@@ -2191,7 +2240,7 @@ function renderWishes(docs) {
   // celebrate a wish arriving live from someone else, but not the very first page load
   if (!isFirstLoad && newIds.length) {
     const title = document.querySelector('.wishes-section .sec-title');
-    spawnEmojiBurst(title, Math.min(8, 3 + newIds.length * 2));
+    spawnEmojiRiseStream(title, Math.min(10, 5 + newIds.length * 2));
   }
 }
 
@@ -2301,7 +2350,7 @@ async function submitWish(e) {
     nameEl.value = '';
     msgEl.value = '';
     document.getElementById('wishCharCount').textContent = '0';
-    spawnEmojiBurst(btn, 14);
+    spawnEmojiRiseStream(btn, 18);
     showToast('Wishes sent! 💛');
   } catch (err) {
     console.error(err);
