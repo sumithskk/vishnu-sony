@@ -466,6 +466,14 @@ body{
   opacity:0;animation:fadeUp 1.1s 1.3s forwards;
   transition:color var(--dur);
 }
+.invite-view-btn{display:flex!important;width:fit-content!important;margin:1.4rem auto 0!important;opacity:0;animation:fadeUp 1.1s 1.5s forwards}
+.invite-modal{position:fixed;inset:0;z-index:2000;background:rgba(20,10,5,0.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:2.2rem 1.5rem 1.5rem;opacity:0;transition:opacity 0.3s var(--ease)}
+.invite-modal.open{display:flex;opacity:1}
+.invite-modal-inner{position:relative;max-width:min(92vw,440px);width:100%;display:flex;flex-direction:column;align-items:center;gap:1rem;transform:scale(0.94);transition:transform 0.3s var(--ease)}
+.invite-modal.open .invite-modal-inner{transform:scale(1)}
+.invite-modal-img{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);background:#fff}
+.invite-modal-close{position:absolute;top:-3rem;right:0;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;width:38px;height:38px;border-radius:50%;font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+.invite-download{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);color:#fff}
 
 /* scroll hint */
 .hero-hint{
@@ -1816,7 +1824,15 @@ body.theme-western .cal-link{
 
 <!-- personal note -->
 <p class="hero-note" data-en="We are overjoyed to share our celebrations with you — we hope you can join us." data-ml="ഞങ്ങളുടെ വിവാഹത്തിൽ പങ്കെടുക്കാൻ നിങ്ങളെ സ്നേഹപൂർവ്വം ക്ഷണിക്കുന്നു.">We are overjoyed to share our celebrations with you — we hope you can join us.</p>
+<button class="action-btn invite-view-btn" onclick="openInviteModal()" type="button"><span data-en="View Invitation Card" data-ml="ക്ഷണക്കത്ത് കാണുക">View Invitation Card</span></button>
 </section>
+<div class="invite-modal" id="inviteModal" onclick="if(event.target===this) closeInviteModal()">
+<div class="invite-modal-inner">
+<button aria-label="Close" class="invite-modal-close" onclick="closeInviteModal()" type="button">&times;</button>
+<img alt="Wedding invitation card" class="invite-modal-img" src="invitation-card.jpg"/>
+<a class="action-btn invite-download" download="Vishnu-Sonya-Invitation.jpg" href="invitation-card.jpg"><span data-en="Save image" data-ml="ഇമേജ് സേവ് ചെയ്യുക">Save image</span></a>
+</div>
+</div>
 <main>
 <section class="event-section active" id="event-kerala" role="tabpanel">
 <div class="date-muhurtham">
@@ -1824,7 +1840,7 @@ body.theme-western .cal-link{
 <div class="dm-flourish"></div>
 <div class="dm-muhurtham-label" data-en="Muhurtham" data-ml="മുഹൂർത്തം">Muhurtham</div>
 <div class="dm-muhurtham-time">12:00 PM</div>
-<div class="dm-note" data-en="The auspicious moment" data-ml="ശുഭ മുഹൂർത്തം">The auspicious moment </div>
+<div class="dm-note" data-en="The auspicious moment. Chenda melam and nadaswaram." data-ml="ശുഭ മുഹൂർത്തം. ചെണ്ടമേളവും നാദസ്വരവും.">The auspicious moment. Chenda melam and nadaswaram.</div>
 <div class="countdown" id="countdown">
 <div class="cd-unit"><span class="cd-num" id="cdDays">00</span><span class="cd-label" data-en="Days" data-ml="ദിവസം">Days</span></div>
 <div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-label" data-en="Hrs" data-ml="മണിക്കൂർ">Hrs</span></div>
@@ -1861,8 +1877,8 @@ body.theme-western .cal-link{
 <input id="rsvpName" maxlength="60" placeholder="Your name" required type="text"/>
 <input id="rsvpPhone" maxlength="15" placeholder="Phone number (optional)" type="tel"/>
 <div class="rsvp-toggle-row">
-<button class="rsvp-toggle" data-val="yes" onclick="setAttending(true)" type="button"><span data-en="✅ Joyfully accept" data-ml="✅ പങ്കെടുക്കും">✅ Joyfully accept</span></button>
-<button class="rsvp-toggle" data-val="no" onclick="setAttending(false)" type="button"><span data-en="❌ Regretfully decline" data-ml="❌ പങ്കെടുക്കാൻ കഴിയില്ല">❌ Regretfully decline</span></button>
+<button class="rsvp-toggle" data-val="yes" onclick="setAttending(true)" type="button"><span data-en="Accepts with pleasure" data-ml="സന്തോഷത്തോടെ സ്വീകരിക്കുന്നു">Accepts with pleasure</span></button>
+<button class="rsvp-toggle" data-val="no" onclick="setAttending(false)" type="button"><span data-en="Declines with regret" data-ml="ഖേദത്തോടെ നിരസിക്കുന്നു">Declines with regret</span></button>
 </div>
 <div class="rsvp-guests" id="rsvpGuestsWrap" style="display:none">
 <label data-en="Number of guests (including you)" data-ml="അതിഥികളുടെ എണ്ണം (നിങ്ങൾ ഉൾപ്പെടെ)" for="rsvpGuests">Number of guests (including you)</label>
@@ -2489,6 +2505,16 @@ async function submitWish(e) {
   } finally {
     btn.disabled = false;
   }
+}
+
+/* ── Invitation card lightbox ── */
+function openInviteModal() {
+  document.getElementById('inviteModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeInviteModal() {
+  document.getElementById('inviteModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 /* ── RSVP ── */
