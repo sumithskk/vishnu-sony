@@ -11,7 +11,7 @@
 <meta content="You are warmly invited to celebrate the wedding of Vishnu and Sonya." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;600&amp;family=Manjari:wght@100;400;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;family=Yatra+One&amp;display=swap&family=Caveat:wght@500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;600&amp;family=Manjari:wght@100;400;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;family=Yatra+One&amp;family=Great+Vibes&amp;display=swap&family=Caveat:wght@500&display=swap" rel="stylesheet"/>
 <!-- Firebase (for the live wishes wall) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -27,6 +27,7 @@ html{scroll-behavior:smooth}
   --ff-body:'EB Garamond',serif;
   --ff-ital:'Cormorant Garamond',serif;
   --ff-display:'Playfair Display',serif;
+  --ff-script:'Great Vibes',cursive;
   --dur:0.65s;--ease:cubic-bezier(0.4,0,0.2,1);
   /* nav bg — translucent, blurs whatever is behind */
   --nav-bg:rgba(247,240,230,0.82);
@@ -97,7 +98,7 @@ body.theme-western {
   --hero-accent: #e8a87c;
   --hero-sub: #d4a898;
 }
-body.lang-ml{--ff-head:'Manjari',sans-serif;--ff-body:'Manjari',sans-serif;--ff-ital:'Manjari',sans-serif;--ff-display:'Manjari',sans-serif}
+body.lang-ml{--ff-head:'Manjari',sans-serif;--ff-body:'Manjari',sans-serif;--ff-ital:'Manjari',sans-serif;--ff-display:'Manjari',sans-serif;--ff-script:'Manjari',sans-serif}
 body{
   background:var(--bg);color:var(--ink);
   font-family:var(--ff-body);font-size:18px;line-height:1.75;
@@ -163,10 +164,10 @@ body{
   opacity:0;animation:fadeUp 1.1s 0.3s forwards;
 }
 .hero-names{
-  font-family:var(--ff-display);
-  font-weight:600;
-  font-size:clamp(2.8rem,10vw,5.5rem);
-  line-height:1.05;color:var(--hero-name,#2b1a0e);
+  font-family:var(--ff-script);
+  font-weight:400;
+  font-size:clamp(3.2rem,11vw,6.2rem);
+  line-height:1.15;color:var(--hero-name,#2b1a0e);
   opacity:0;animation:fadeUp 1.1s 0.55s forwards;
 }
 .hero-amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.52em;color:var(--hero-accent,#8b1a1a);display:block}
@@ -467,9 +468,13 @@ body{
   transition:color var(--dur);
 }
 .invite-view-btn{display:flex!important;width:fit-content!important;margin:1.4rem auto 0!important;opacity:0;animation:fadeUp 1.1s 1.5s forwards}
+.rsvp-open-btn{display:flex!important;width:fit-content!important;margin:0!important}
 .invite-modal{position:fixed;inset:0;z-index:2000;background:rgba(20,10,5,0.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:2.2rem 1.5rem 1.5rem;opacity:0;transition:opacity 0.3s var(--ease)}
 .invite-modal.open{display:flex;opacity:1}
-.invite-modal-inner{position:relative;max-width:min(92vw,440px);width:100%;display:flex;flex-direction:column;align-items:center;gap:1rem;transform:scale(0.94);transition:transform 0.3s var(--ease)}
+.invite-modal-inner{position:relative;max-width:min(92vw,440px);width:100%;display:flex;flex-direction:column;align-items:center;gap:1rem;transform:scale(0.94);transition:transform 0.3s var(--ease);max-height:88vh;overflow-y:auto;padding:0.3rem}
+.wishes-modal-inner{max-width:min(94vw,560px)}
+.invite-modal-inner .sec-title,.invite-modal-inner .sec-sub{margin-bottom:0}
+.invite-modal-inner .rsvp-form,.invite-modal-inner .wish-form{width:100%}
 .invite-modal.open .invite-modal-inner{transform:scale(1)}
 .invite-modal-img{width:100%;aspect-ratio:1/1;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);background:#fff}
 .invite-modal-close{position:absolute;top:-3rem;right:0;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;width:38px;height:38px;border-radius:50%;font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
@@ -534,8 +539,10 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .dm-muhurtham-time{font-family:var(--ff-display);font-weight:700;font-size:2.3rem;color:var(--primary);line-height:1.1;margin-bottom:0.6rem;transition:color var(--dur)}
 .dm-note{font-family:var(--ff-ital);font-style:italic;font-size:0.94rem;color:var(--ink2);margin-bottom:1.5rem;transition:color var(--dur)}
 .countdown{display:flex;justify-content:center;gap:0.55rem}
-.cd-unit{display:flex;flex-direction:column;align-items:center;flex:1;max-width:70px}
-.cd-num{font-family:var(--ff-display);font-weight:700;font-size:1.4rem;color:var(--primary);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.5rem 0.2rem;width:100%;text-align:center;backdrop-filter:blur(8px);transition:color var(--dur),border-color var(--dur),background var(--dur)}
+.cd-unit{display:flex;flex-direction:column;align-items:center;flex:1;max-width:70px;perspective:220px}
+.cd-num{font-family:var(--ff-display);font-weight:700;font-size:1.4rem;color:var(--primary);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.5rem 0.2rem;width:100%;text-align:center;backdrop-filter:blur(8px);transition:color var(--dur),border-color var(--dur),background var(--dur);display:inline-block;transform-style:preserve-3d}
+.cd-num.tick{animation:cdFlip 0.5s cubic-bezier(0.45,0,0.55,1)}
+@keyframes cdFlip{0%{transform:rotateX(0deg)}50%{transform:rotateX(-90deg)}100%{transform:rotateX(0deg)}}
 .cd-label{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink2);margin-top:0.35rem}
 .chip{padding:0.45rem 1rem;border-radius:100px;border:1px solid rgba(180,142,46,0.34);background:rgba(255,255,255,0.34);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#7b5a1d;font-size:1rem;font-weight:600;line-height:1.2;transition:border-color var(--dur),color var(--dur),background var(--dur)}
 .timeline-toggle{display:flex;align-items:center;gap:0.6rem;background:none;border:none;cursor:pointer;font-family:var(--ff-ital);font-style:italic;font-size:1rem;color:var(--ink2);padding:0;transition:color 0.2s;touch-action:manipulation}
@@ -612,6 +619,10 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 @keyframes emojiBounceIn{0%{opacity:0;transform:scale(0) rotate(-15deg)}60%{opacity:1;transform:scale(1.3) rotate(8deg)}100%{transform:scale(1) rotate(0)}}
 .emoji-burst-particle{position:fixed;font-size:1.4rem;pointer-events:none;z-index:9999;left:0;top:0;animation:emojiFly 1100ms ease-out forwards}
 #heartStage{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:visible}
+#petalStage{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:visible}
+.music-toggle{position:fixed;top:1rem;right:1rem;z-index:1000;width:46px;height:46px;border-radius:50%;background:var(--surface);border:1px solid var(--border);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:1.15rem;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.12);transition:background var(--dur),border-color var(--dur)}
+.music-toggle .m-icon{animation:musicSpin 6s linear infinite;animation-play-state:paused}
+.music-toggle.playing .m-icon{animation-play-state:running}
 @keyframes emojiFly{0%{opacity:0;transform:translate(0,0) scale(0.5) rotate(0deg)}12%{opacity:1}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(1.15) rotate(var(--rot))}}
 .wish-name{font-family:var(--ff-display);font-weight:600;font-size:1.08rem;color:var(--primary);margin-bottom:0.35rem;transition:font-family var(--dur),color var(--dur)}
 .wish-msg{font-family:var(--ff-ital);font-size:1.08rem;line-height:1.6;color:var(--ink);white-space:pre-wrap;word-break:break-word}
@@ -621,6 +632,7 @@ footer{text-align:center;padding:1.75rem 1.5rem;font-family:var(--ff-ital);font-
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(3rem);background:var(--primary);color:#fff;padding:0.45rem 1.3rem;border-radius:100px;font-size:0.88rem;opacity:0;pointer-events:none;z-index:999;transition:transform 0.3s,opacity 0.3s,background var(--dur)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes musicSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes secReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes panelIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{opacity:0.3;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1)}}
@@ -1763,6 +1775,11 @@ body.theme-western .cal-link{
 </head>
 <body class="theme-kerala">
 <svg id="heartStage" xmlns="http://www.w3.org/2000/svg"></svg>
+<svg id="petalStage" xmlns="http://www.w3.org/2000/svg"></svg>
+<audio id="bgMusic" loop preload="none">
+<source src="background-music.mp3" type="audio/mpeg"/>
+</audio>
+<button aria-label="Toggle background music" class="music-toggle" id="musicToggle" onclick="toggleMusic()" type="button"><span class="m-icon">🎵</span></button>
 <div aria-modal="true" class="lang-overlay" id="langOverlay" role="dialog">
 <p class="lang-title">Choose your preferred language</p>
 <p class="lang-title-ml">ഭാഷ തിരഞ്ഞെടുക്കുക</p>
@@ -1799,8 +1816,8 @@ body.theme-western .cal-link{
       </div>
       <div class="couple-card-body">
         <div class="couple-card-note"
-          data-en="The groom. Vishnu, son of the late Kumaran and Nalini."
-          data-ml="വരൻ. വിഷ്ണു, അന്തരിച്ച കുമാരന്റെയും നളിനിയുടെയും മകൻ.">The groom. Vishnu, son of the late Kumaran and Nalini.</div>
+          data-en="The groom. Vishnu, son of Kumaran (late) and Nalini."
+          data-ml="വരൻ. വിഷ്ണു, കുമാരൻ (പരേതനായ) & നളിനി ദമ്പതികളുടെ മകൻ.">The groom. Vishnu, son of Kumaran (late) and Nalini.</div>
       </div>
     </div>
 
@@ -1815,8 +1832,8 @@ body.theme-western .cal-link{
       </div>
       <div class="couple-card-body">
         <div class="couple-card-note"
-          data-en="The bride. Sonya, daughter of the late Bhaskaran K K and Nirmala T."
-          data-ml="വധു. സോണ്യ, അന്തരിച്ച ഭാസ്കരൻ കെ കെയുടെയും നിർമല ടിയുടെയും മകൾ.">The bride. Sonya, daughter of the late Bhaskaran K K and Nirmala T.</div>
+          data-en="The bride. Sonya, daughter of Bhaskaran K K (late) and Nirmala T."
+          data-ml="വധു. സോണ്യ, ഭാസ്കരൻ കെ കെ (പരേതനായ) & നിർമല ടി ദമ്പതികളുടെ മകൾ.">The bride. Sonya, daughter of Bhaskaran K K (late) and Nirmala T.</div>
       </div>
     </div>
   </div>
@@ -1840,7 +1857,7 @@ body.theme-western .cal-link{
 <div class="dm-flourish"></div>
 <div class="dm-muhurtham-label" data-en="Muhurtham" data-ml="മുഹൂർത്തം">Muhurtham</div>
 <div class="dm-muhurtham-time">12:00 PM</div>
-<div class="dm-note" data-en="The auspicious moment. Chenda melam and nadaswaram." data-ml="ശുഭ മുഹൂർത്തം. ചെണ്ടമേളവും നാദസ്വരവും.">The auspicious moment. Chenda melam and nadaswaram.</div>
+<div class="dm-note" data-en="The auspicious moment." data-ml="ശുഭ മുഹൂർത്തം.">The auspicious moment.</div>
 <div class="countdown" id="countdown">
 <div class="cd-unit"><span class="cd-num" id="cdDays">00</span><span class="cd-label" data-en="Days" data-ml="ദിവസം">Days</span></div>
 <div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-label" data-en="Hrs" data-ml="മണിക്കൂർ">Hrs</span></div>
@@ -1865,14 +1882,30 @@ body.theme-western .cal-link{
 <button class="t-tab on" onclick="tab(this,'k-bus')"><span data-en="Bus" data-ml="ബസ്">Bus</span></button>
 <button class="t-tab" onclick="tab(this,'k-train')"><span data-en="Train" data-ml="ട്രെയിൻ">Train</span></button>
 </div>
-<div class="t-panel on" id="k-bus"><div class="t-text" data-en="From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue." data-ml="തലശ്ശേരിയിൽ നിന്ന്: കരിയാട് ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.<br/>വടകരയിൽ നിന്ന്: പെരിങ്ങത്തൂർ ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.">From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue.</div><a class="action-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kariyad+CH+Moidu+Master+Auditorium,+Kariyad,+Thalassery,+Kannur" rel="noopener" target="_blank"><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a></div>
-<div class="t-panel" id="k-train"><div class="t-text" data-en="Nearest railway stations: Mahe, Thalassery, and Vadakara." data-ml="ഏറ്റവും അടുത്ത റെയിൽവേ സ്റ്റേഷനുകൾ: മാഹി, തലശ്ശേരി, വടകര.">Nearest railway stations: Mahe, Thalassery, and Vadakara.</div><a class="action-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kariyad+CH+Moidu+Master+Auditorium,+Kariyad,+Thalassery,+Kannur" rel="noopener" target="_blank"><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a></div>
+<div class="t-panel on" id="k-bus"><div class="t-text" data-en="From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue." data-ml="തലശ്ശേരിയിൽ നിന്ന്: കരിയാട് ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.<br/>വടകരയിൽ നിന്ന്: പെരിങ്ങത്തൂർ ബസ്സിൽ കയറി പുതുശ്ശേരിപ്പള്ളിയിൽ ഇറങ്ങുക — 200 മീറ്റർ.">From Thalassery: board a bus toward Kariyad, get down at Puthusserypalli — 200m to the venue.<br/>From Vadakara: board a bus toward Peringathur, get down at Puthusserypalli — 200m to the venue.</div></div>
+<div class="t-panel" id="k-train"><div class="t-text" data-en="Nearest railway stations: Mahe, Thalassery, and Vadakara." data-ml="ഏറ്റവും അടുത്ത റെയിൽവേ സ്റ്റേഷനുകൾ: മാഹി, തലശ്ശേരി, വടകര.">Nearest railway stations: Mahe, Thalassery, and Vadakara.</div></div>
+</div>
+</section>
+<hr class="section-divider"/>
+<section class="contacts-section">
+<h3 class="sec-title" data-en="Questions? Reach out" data-ml="ചോദ്യങ്ങളുണ്ടോ?">Questions? Reach out</h3>
+<p class="sec-sub" data-en="Reach the family directly." data-ml="നേരിട്ട് ബന്ധപ്പെടുക.">Reach the family directly.</p>
+<div class="contacts-grid">
+<div class="ccard"><div class="ccard-role" data-en="Bride's Brother" data-ml="വധുവിന്റെ സഹോദരൻ">Bride's Brother</div><div class="ccard-name">Sumith K K</div><a href="tel:+919846769266">+91 98467 69266</a></div>
+<div class="ccard"><div class="ccard-role" data-en="Bride's Mother" data-ml="വധുവിന്റെ അമ്മ">Bride's Mother</div><div class="ccard-name">Nirmala</div><a href="tel:+919961859220">+91 99618 59220</a></div>
 </div>
 </section>
 <hr class="section-divider"/>
 <section class="rsvp-section">
 <h3 class="sec-title" data-en="RSVP" data-ml="RSVP">RSVP</h3>
 <p class="sec-sub" data-en="Kindly let us know if you'll be joining us." data-ml="നിങ്ങൾ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കുക.">Kindly let us know if you'll be joining us.</p>
+<button class="action-btn primary rsvp-open-btn" onclick="openModal('rsvpModal')" type="button"><span data-en="Open RSVP" data-ml="RSVP തുറക്കുക">Open RSVP</span></button>
+</section>
+<div class="invite-modal" id="rsvpModal" onclick="if(event.target===this) closeModal('rsvpModal')">
+<div class="invite-modal-inner">
+<button aria-label="Close" class="invite-modal-close" onclick="closeModal('rsvpModal')" type="button">&times;</button>
+<h3 class="sec-title" data-en="RSVP" data-ml="RSVP" style="color:#fff">RSVP</h3>
+<p class="sec-sub" data-en="Kindly let us know if you'll be joining us." data-ml="നിങ്ങൾ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കുക." style="color:#e8dcc8">Kindly let us know if you'll be joining us.</p>
 <form class="rsvp-form" id="rsvpForm" onsubmit="submitRsvp(event)">
 <input id="rsvpName" maxlength="60" placeholder="Your name" required type="text"/>
 <input id="rsvpPhone" maxlength="15" placeholder="Phone number (optional)" type="tel"/>
@@ -1886,19 +1919,19 @@ body.theme-western .cal-link{
 </div>
 <button class="action-btn primary rsvp-submit" id="rsvpSubmitBtn" type="submit"><span data-en="Send RSVP" data-ml="RSVP അയക്കുക">Send RSVP</span></button>
 </form>
-</section>
-<hr class="section-divider"/>
-<section class="contacts-section">
-<h3 class="sec-title" data-en="Need help getting there?" data-ml="സഹായം വേണോ?">Need help getting there?</h3>
-<p class="sec-sub" data-en="Reach the family directly." data-ml="നേരിട്ട് ബന്ധപ്പെടുക.">Reach the family directly.</p>
-<div class="contacts-grid">
-<div class="ccard"><div class="ccard-role" data-en="Bride's Brother" data-ml="വധുവിന്റെ സഹോദരൻ">Bride's Brother</div><div class="ccard-name">Sumith K K</div><a href="tel:+919846769266">+91 98467 69266</a></div>
-<div class="ccard"><div class="ccard-role" data-en="Bride's Mother" data-ml="വധുവിന്റെ അമ്മ">Bride's Mother</div><div class="ccard-name">Nirmala</div><a href="tel:+919961859220">+91 99618 59220</a></div>
 </div>
-</section>
+</div>
+
 <section class="wishes-section">
 <h3 class="sec-title" data-en="Wishes for the couple" data-ml="ദമ്പതികൾക്ക് ആശംസകൾ">Wishes for the couple</h3>
 <p class="sec-sub" data-en="Leave a note — it'll show up here for everyone." data-ml="ഒരു സന്ദേശം ഇടൂ — എല്ലാവർക്കും ഇവിടെ കാണാം.">Leave a note — it'll show up here for everyone.</p>
+<button class="action-btn primary" onclick="openModal('wishesModal')" type="button"><span data-en="View &amp; send wishes" data-ml="ആശംസകൾ കാണുക / അയക്കുക">View &amp; send wishes</span></button>
+</section>
+<div class="invite-modal" id="wishesModal" onclick="if(event.target===this) closeModal('wishesModal')">
+<div class="invite-modal-inner wishes-modal-inner">
+<button aria-label="Close" class="invite-modal-close" onclick="closeModal('wishesModal')" type="button">&times;</button>
+<h3 class="sec-title" data-en="Wishes for the couple" data-ml="ദമ്പതികൾക്ക് ആശംസകൾ" style="color:#fff">Wishes for the couple</h3>
+<p class="sec-sub" data-en="Leave a note — it'll show up here for everyone." data-ml="ഒരു സന്ദേശം ഇടൂ — എല്ലാവർക്കും ഇവിടെ കാണാം." style="color:#e8dcc8">Leave a note — it'll show up here for everyone.</p>
 <form class="wish-form" id="wishForm" onsubmit="submitWish(event)">
 <input id="wishName" maxlength="40" placeholder="Your name" required type="text"/>
 <textarea id="wishMsg" maxlength="300" placeholder="Your wishes for Vishnu &amp; Sonya..." required></textarea>
@@ -1906,7 +1939,9 @@ body.theme-western .cal-link{
 <button class="action-btn primary wish-submit" id="wishSubmitBtn" type="submit"><span data-en="Send wishes" data-ml="ആശംസകൾ അയക്കുക">Send wishes</span></button>
 </form>
 <div class="wishes-list" id="wishesList"><div class="wishes-loading" data-en="Loading wishes…" data-ml="ലോഡ് ചെയ്യുന്നു…">Loading wishes…</div></div>
-</section>
+</div>
+</div>
+
 <hr class="section-divider"/>
 <section class="share-section">
 <h3 class="sec-title" data-en="Share with loved ones" data-ml="പ്രിയപ്പെട്ടവരോടൊപ്പം">Share with loved ones</h3>
@@ -2060,6 +2095,14 @@ function startCountdown() {
   const dHours = document.getElementById('cdHours');
   const dMins = document.getElementById('cdMins');
   const dSecs = document.getElementById('cdSecs');
+  function setNum(numEl, val) {
+    if (numEl.textContent === val) return;
+    numEl.classList.remove('tick');
+    void numEl.offsetWidth; // restart the animation each time the value changes
+    numEl.classList.add('tick');
+    // swap the digit at the midpoint of the flip, when the card is edge-on
+    setTimeout(() => { numEl.textContent = val; }, 250);
+  }
   function tick() {
     const diff = target - Date.now();
     if (diff <= 0) {
@@ -2069,15 +2112,26 @@ function startCountdown() {
       return;
     }
     const s = Math.floor(diff / 1000);
-    dDays.textContent = String(Math.floor(s / 86400)).padStart(2, '0');
-    dHours.textContent = String(Math.floor((s % 86400) / 3600)).padStart(2, '0');
-    dMins.textContent = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
-    dSecs.textContent = String(s % 60).padStart(2, '0');
+    setNum(dDays, String(Math.floor(s / 86400)).padStart(2, '0'));
+    setNum(dHours, String(Math.floor((s % 86400) / 3600)).padStart(2, '0'));
+    setNum(dMins, String(Math.floor((s % 3600) / 60)).padStart(2, '0'));
+    setNum(dSecs, String(s % 60).padStart(2, '0'));
   }
   tick();
   const timer = setInterval(tick, 1000);
 }
 document.addEventListener('DOMContentLoaded', startCountdown);
+
+// Safety net: on some phones the polaroid entrance animation can fail to
+// finish (power-saving modes, older WebViews, etc.), which would otherwise
+// leave the couple photos/bios permanently invisible since they start at
+// opacity:0 and rely on the animation to reveal them. Force them visible
+// after the animation should long be done, regardless of what happened.
+setTimeout(() => {
+  document.querySelectorAll('.couple-card').forEach(el => {
+    el.style.opacity = '1';
+  });
+}, 3000);
 
 /* ── Toast / copy ── */
 function showToast(msg) {
@@ -2204,7 +2258,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDzqxffHp-JYixYqhAk2VI8aqUohIZ7iw8",
   authDomain: "vishnu-sony.firebaseapp.com",
   projectId: "vishnu-sony",
-  storageBucket: "vishnu-sony.appspot.com",
+  storageBucket: "vishnu-sony.firebasestorage.app",
   messagingSenderId: "931553373870",
   appId: "1:931553373870:web:9cdc61641278280f62873f"
 };
@@ -2355,6 +2409,131 @@ function spawnEmojiRiseStream(originEl, count) {
   const n = count || 10;
   for (let i = 0; i < n; i++) {
     setTimeout(spawnHeart, Math.random() * 900);
+  }
+}
+
+/* ── Falling petals (ambient, continuous) ── */
+const PETAL_NS = 'http://www.w3.org/2000/svg';
+const PETAL_COLORS = [
+  ['#ffd9dd', '#e8455a'], // blush pink -> rose red
+  ['#c0233f', '#7a0f22'], // deep red -> dark crimson
+  ['#fff0ec', '#f2a5ae'], // near-white -> soft pink
+  ['#ffb3c1', '#c0233f'], // medium pink -> deep red
+];
+let _petalGradId = 0;
+let _petalsRunning = false;
+
+function makePetalEl() {
+  const isBig = Math.random() < 0.25; // roughly 1 in 4 are noticeably larger
+  const size = isBig ? (17 + Math.random() * 12) : (6 + Math.random() * 7);
+  const [c1, c2] = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
+  const id = 'pg' + (_petalGradId++);
+
+  const svg = document.createElementNS(PETAL_NS, 'svg');
+  svg.setAttribute('width', size);
+  svg.setAttribute('height', size);
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.style.position = 'absolute';
+  svg.style.left = '0';
+  svg.style.top = '0';
+  svg.style.willChange = 'transform, opacity';
+  svg.style.opacity = (0.55 + Math.random() * 0.35).toFixed(2);
+
+  const defs = document.createElementNS(PETAL_NS, 'defs');
+  const grad = document.createElementNS(PETAL_NS, 'linearGradient');
+  grad.setAttribute('id', id);
+  grad.setAttribute('x1', '0%'); grad.setAttribute('y1', '0%');
+  grad.setAttribute('x2', '100%'); grad.setAttribute('y2', '100%');
+  const s1 = document.createElementNS(PETAL_NS, 'stop');
+  s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', c1);
+  const s2 = document.createElementNS(PETAL_NS, 'stop');
+  s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', c2);
+  grad.appendChild(s1); grad.appendChild(s2);
+  defs.appendChild(grad);
+
+  // a rose petal shape (rounded, tapering to a point)
+  const path = document.createElementNS(PETAL_NS, 'path');
+  path.setAttribute('d', 'M12,2 C16,3.5 18.5,8 17,13 C16,17 13.5,20.5 12,22 C10.5,20 8.5,16.5 7,12 C5.5,7.5 8,3.5 12,2 Z');
+  path.setAttribute('fill', `url(#${id})`);
+
+  svg.appendChild(defs);
+  svg.appendChild(path);
+  return svg;
+}
+
+function fallPetal() {
+  const stage = document.getElementById('petalStage');
+  if (!stage) return;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const el = makePetalEl();
+
+  const startX = Math.random() * vw;
+  const startY = -30 - Math.random() * 60;
+  const fallDist = vh + 80;
+  const duration = 9000 + Math.random() * 7000;
+  const swayAmp = 20 + Math.random() * 40;
+  const swayFreq = 0.6 + Math.random() * 0.8;
+  const swayPhase = Math.random() * Math.PI * 2;
+  const spin = (Math.random() > 0.5 ? 1 : -1) * (120 + Math.random() * 240);
+
+  stage.appendChild(el);
+  const start = performance.now();
+
+  function frame(now) {
+    if (!_petalsRunning) { el.remove(); return; }
+    const t = (now - start) / duration;
+    if (t >= 1) {
+      el.remove();
+      // stagger the respawn so petals drift out of sync over time,
+      // instead of instantly relaunching and gradually clumping together
+      setTimeout(fallPetal, 800 + Math.random() * 5000);
+      return;
+    }
+    const y = t * fallDist;
+    const x = Math.sin(t * Math.PI * 2 * swayFreq + swayPhase) * swayAmp;
+    const rot = t * spin;
+    el.style.transform = `translate(${startX + x}px, ${startY + y}px) rotate(${rot}deg)`;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+function startPetals(count) {
+  if (_petalsRunning) return;
+  _petalsRunning = true;
+  const n = count || 10;
+  for (let i = 0; i < n; i++) {
+    // spread launches evenly across a wide window with jitter, instead of
+    // pure random (which can cluster several petals in the same instant)
+    const slot = (12000 / n) * i;
+    setTimeout(fallPetal, slot + Math.random() * (12000 / n));
+  }
+}
+function stopPetals() {
+  _petalsRunning = false;
+  const stage = document.getElementById('petalStage');
+  if (stage) stage.innerHTML = '';
+}
+// pause when the tab isn't visible, to save battery
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopPetals();
+  else startPetals(10);
+});
+document.addEventListener('DOMContentLoaded', () => startPetals(10));
+
+/* ── Background music ── */
+function toggleMusic() {
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicToggle');
+  if (!audio) return;
+  if (audio.paused) {
+    audio.volume = 0.45;
+    audio.play().then(() => btn.classList.add('playing')).catch(() => {
+      showToast('Tap again to enable music');
+    });
+  } else {
+    audio.pause();
+    btn.classList.remove('playing');
   }
 }
 
@@ -2509,14 +2688,23 @@ async function submitWish(e) {
 
 /* ── Invitation card lightbox ── */
 function openInviteModal() {
-  document.getElementById('inviteModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  openModal('inviteModal');
 }
 function closeInviteModal() {
-  document.getElementById('inviteModal').classList.remove('open');
+  closeModal('inviteModal');
+}
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.remove('open');
   document.body.style.overflow = '';
 }
-
 /* ── RSVP ── */
 let _rsvpAttending = null;
 function setAttending(val) {
