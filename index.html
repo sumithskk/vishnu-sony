@@ -4,11 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
-<title>Vishnu Kumar &amp; Sonya — Wedding</title>
+<title>Vishnu &amp; Sonya — Wedding</title>
 <link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
-<meta content="You are warmly invited to celebrate the wedding of Vishnu Kumar and Sonya." name="description"/>
+<meta content="You are warmly invited to celebrate the wedding of Vishnu and Sonya." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;600&amp;family=Manjari:wght@100;400;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;family=Yatra+One&amp;display=swap&family=Caveat:wght@500&display=swap" rel="stylesheet"/>
@@ -26,6 +26,7 @@ html{scroll-behavior:smooth}
   --ff-head:'Baloo Chettan 2',cursive;
   --ff-body:'EB Garamond',serif;
   --ff-ital:'Cormorant Garamond',serif;
+  --ff-display:'Playfair Display',serif;
   --dur:0.65s;--ease:cubic-bezier(0.4,0,0.2,1);
   /* nav bg — translucent, blurs whatever is behind */
   --nav-bg:rgba(247,240,230,0.82);
@@ -96,7 +97,7 @@ body.theme-western {
   --hero-accent: #e8a87c;
   --hero-sub: #d4a898;
 }
-body.lang-ml{--ff-head:'Manjari',sans-serif;--ff-body:'Manjari',sans-serif;--ff-ital:'Manjari',sans-serif}
+body.lang-ml{--ff-head:'Manjari',sans-serif;--ff-body:'Manjari',sans-serif;--ff-ital:'Manjari',sans-serif;--ff-display:'Manjari',sans-serif}
 body{
   background:var(--bg);color:var(--ink);
   font-family:var(--ff-body);font-size:18px;line-height:1.75;
@@ -162,9 +163,10 @@ body{
   opacity:0;animation:fadeUp 1.1s 0.3s forwards;
 }
 .hero-names{
-  font-family:'Baloo Chettan 2',cursive;
+  font-family:var(--ff-display);
+  font-weight:600;
   font-size:clamp(2.8rem,10vw,5.5rem);
-  line-height:1.0;color:var(--hero-name,#2b1a0e);
+  line-height:1.05;color:var(--hero-name,#2b1a0e);
   opacity:0;animation:fadeUp 1.1s 0.55s forwards;
 }
 .hero-amp{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.52em;color:var(--hero-accent,#8b1a1a);display:block}
@@ -517,6 +519,16 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .event-hero-title{font-family:var(--ff-head);font-size:clamp(1.6rem,4.5vw,2.4rem);color:#fff;text-shadow:0 3px 16px rgba(0,0,0,0.65);line-height:1.1;margin-bottom:0.25rem;transition:font-family var(--dur)}
 .event-hero-sub{font-family:var(--ff-ital);font-style:italic;font-size:1.08rem;line-height:1.35;color:rgba(255,255,255,0.96);text-shadow:0 2px 10px rgba(0,0,0,0.7)}
 .chips{display:flex;gap:0.7rem;flex-wrap:wrap;margin-bottom:2rem}
+.date-muhurtham{text-align:center;padding:1.6rem 1.2rem 1.8rem;max-width:420px;margin:0 auto}
+.dm-date{font-family:var(--ff-display);font-weight:600;font-size:1.3rem;color:var(--ink);margin-bottom:1rem;transition:color var(--dur)}
+.dm-flourish{width:64px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 1rem}
+.dm-muhurtham-label{font-size:0.74rem;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem}
+.dm-muhurtham-time{font-family:var(--ff-display);font-weight:700;font-size:2.3rem;color:var(--primary);line-height:1.1;margin-bottom:0.6rem;transition:color var(--dur)}
+.dm-note{font-family:var(--ff-ital);font-style:italic;font-size:0.94rem;color:var(--ink2);margin-bottom:1.5rem;transition:color var(--dur)}
+.countdown{display:flex;justify-content:center;gap:0.55rem}
+.cd-unit{display:flex;flex-direction:column;align-items:center;flex:1;max-width:70px}
+.cd-num{font-family:var(--ff-display);font-weight:700;font-size:1.4rem;color:var(--primary);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.5rem 0.2rem;width:100%;text-align:center;backdrop-filter:blur(8px);transition:color var(--dur),border-color var(--dur),background var(--dur)}
+.cd-label{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink2);margin-top:0.35rem}
 .chip{padding:0.45rem 1rem;border-radius:100px;border:1px solid rgba(180,142,46,0.34);background:rgba(255,255,255,0.34);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#7b5a1d;font-size:1rem;font-weight:600;line-height:1.2;transition:border-color var(--dur),color var(--dur),background var(--dur)}
 .timeline-toggle{display:flex;align-items:center;gap:0.6rem;background:none;border:none;cursor:pointer;font-family:var(--ff-ital);font-style:italic;font-size:1rem;color:var(--ink2);padding:0;transition:color 0.2s;touch-action:manipulation}
 .timeline-toggle:hover{color:var(--gold)}
@@ -536,8 +548,8 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .tl-note{font-size:0.88rem;color:var(--ink2);line-height:1.5;transition:color var(--dur)}
 .section-divider{border:none;border-top:1px solid var(--border);margin:2rem 0;transition:border-color var(--dur)}
 .venue-block{margin-bottom:1.75rem}
-.venue-label{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;transition:color var(--dur)}
-.venue-name{font-family:var(--ff-head);font-size:1.1rem;color:var(--primary);margin-bottom:0.15rem;transition:font-family var(--dur),color var(--dur)}
+.venue-label{font-size:0.72rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;padding-bottom:0.25rem;border-bottom:2px solid var(--gold);display:inline-block;transition:color var(--dur),border-color var(--dur)}
+.venue-name{font-family:var(--ff-display);font-weight:700;font-size:1.3rem;color:var(--primary);margin-bottom:0.15rem;transition:font-family var(--dur),color var(--dur)}
 .venue-addr{font-family:var(--ff-ital);font-size:1rem;color:var(--ink2);margin-bottom:1rem;line-height:1.5;transition:color var(--dur)}
 .venue-actions{display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center}
 .action-btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1.05rem;border-radius:8px;font-family:var(--ff-body);font-size:0.85rem;text-decoration:none;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--ink);backdrop-filter:blur(8px);transition:all 0.2s,background var(--dur),border-color var(--dur),color var(--dur);touch-action:manipulation;min-height:44px}
@@ -571,6 +583,16 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .wish-form input:focus,.wish-form textarea:focus{outline:none;border-color:var(--gold)}
 .wish-form textarea{resize:vertical;min-height:80px;font-family:var(--ff-ital)}
 .wish-form .wish-submit{align-self:center;margin-top:0.2rem}
+.rsvp-form{display:flex;flex-direction:column;gap:0.65rem;max-width:420px;margin:0 auto;text-align:left}
+.rsvp-form input{font-family:var(--ff-body);font-size:0.95rem;color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.9rem;backdrop-filter:blur(8px);width:100%;transition:border-color var(--dur),background var(--dur),color var(--dur)}
+.rsvp-form input:focus{outline:none;border-color:var(--gold)}
+.rsvp-toggle-row{display:flex;gap:0.6rem;flex-wrap:wrap}
+.rsvp-toggle{flex:1;min-width:150px;font-family:var(--ff-body);font-size:0.9rem;font-weight:600;padding:0.7rem 0.6rem;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);color:var(--ink2);backdrop-filter:blur(8px);cursor:pointer;transition:all 0.2s;touch-action:manipulation}
+.rsvp-toggle.selected{border-color:var(--gold);background:var(--gold);color:#fff}
+.rsvp-toggle.selected[data-val="no"]{background:var(--primary);border-color:var(--primary)}
+.rsvp-guests{display:flex;flex-direction:column;gap:0.35rem;animation:fadeUp 0.35s var(--ease)}
+.rsvp-guests label{font-size:0.8rem;color:var(--ink2)}
+.rsvp-form .rsvp-submit{align-self:center;margin-top:0.3rem}
 .wish-count{font-size:0.72rem;color:var(--ink2);text-align:right;margin-top:-0.35rem}
 .wishes-list{display:flex;gap:0.85rem;max-width:100%;margin:0 auto;text-align:left;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0.2rem 1rem 0.6rem;cursor:grab}
 .wishes-list::-webkit-scrollbar{display:none}
@@ -581,16 +603,10 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 @keyframes wishPopIn{0%{opacity:0;transform:scale(0.82) translateY(14px)}55%{opacity:1;transform:scale(1.04) translateY(-3px);box-shadow:0 0 0 2px var(--gold)}100%{transform:scale(1) translateY(0);box-shadow:0 0 0 0 transparent}}
 @keyframes emojiBounceIn{0%{opacity:0;transform:scale(0) rotate(-15deg)}60%{opacity:1;transform:scale(1.3) rotate(8deg)}100%{transform:scale(1) rotate(0)}}
 .emoji-burst-particle{position:fixed;font-size:1.4rem;pointer-events:none;z-index:9999;left:0;top:0;animation:emojiFly 1100ms ease-out forwards}
-.emoji-rise-particle{position:fixed;pointer-events:none;z-index:9999;left:0;top:0;animation-name:emojiRise;animation-timing-function:ease-in-out;animation-fill-mode:forwards;filter:drop-shadow(0 0 7px rgba(255,90,120,0.55)) drop-shadow(0 0 3px rgba(255,255,255,0.4))}
-@keyframes emojiRise{
-  0%{opacity:0;transform:translate(0,0) scale(0.5)}
-  8%{opacity:0.95}
-  92%{opacity:0.9}
-  100%{opacity:0;transform:translate(var(--x5),-105vh) scale(1)}
-}
+#heartStage{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:visible}
 @keyframes emojiFly{0%{opacity:0;transform:translate(0,0) scale(0.5) rotate(0deg)}12%{opacity:1}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(1.15) rotate(var(--rot))}}
-.wish-name{font-family:var(--ff-head);font-size:0.92rem;color:var(--primary);margin-bottom:0.3rem;transition:font-family var(--dur),color var(--dur)}
-.wish-msg{font-family:var(--ff-ital);font-size:0.95rem;line-height:1.55;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.wish-name{font-family:var(--ff-display);font-weight:600;font-size:1.08rem;color:var(--primary);margin-bottom:0.35rem;transition:font-family var(--dur),color var(--dur)}
+.wish-msg{font-family:var(--ff-ital);font-size:1.08rem;line-height:1.6;color:var(--ink);white-space:pre-wrap;word-break:break-word}
 .wish-time{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-top:0.4rem}
 .wishes-empty,.wishes-loading{font-family:var(--ff-ital);font-style:italic;color:var(--ink2);font-size:0.92rem;padding:1rem 0}
 footer{text-align:center;padding:1.75rem 1.5rem;font-family:var(--ff-ital);font-style:italic;font-size:0.85rem;color:var(--ink2);border-top:1px solid var(--border);transition:color var(--dur),border-color var(--dur)}
@@ -1738,6 +1754,7 @@ body.theme-western .cal-link{
 </style>
 </head>
 <body class="theme-kerala">
+<svg id="heartStage" xmlns="http://www.w3.org/2000/svg"></svg>
 <div aria-modal="true" class="lang-overlay" id="langOverlay" role="dialog">
 <p class="lang-title">Choose your preferred language</p>
 <p class="lang-title-ml">ഭാഷ തിരഞ്ഞെടുക്കുക</p>
@@ -1756,7 +1773,7 @@ body.theme-western .cal-link{
 <!-- names + location -->
 <div class="hero-text">
 <p class="hero-pre" data-en="You are warmly invited" data-ml="സ്നേഹത്തോടെ ക്ഷണിക്കുന്നു">You are warmly invited</p>
-<h1 class="hero-names"><span data-en="Vishnu Kumar" data-ml="വിഷ്ണു കുമാർ">Vishnu Kumar</span><span class="hero-amp">&amp;</span><span data-en="Sonya" data-ml="സോണ്യ">Sonya</span></h1>
+<h1 class="hero-names"><span data-en="Vishnu" data-ml="വിഷ്ണു">Vishnu</span><span class="hero-amp">&amp;</span><span data-en="Sonya" data-ml="സോണ്യ">Sonya</span></h1>
 <div class="hero-rule"></div>
 <p class="hero-location">Thalassery, Kerala · November 1, 2026</p>
 </div>
@@ -1766,16 +1783,16 @@ body.theme-western .cal-link{
     <div class="couple-card" id="coupleCard0">
       <div class="polaroid-hole" aria-hidden="true"></div>
       <div class="polaroid">
-        <img alt="Vishnu Kumar" class="couple-card-photo" id="cardPhoto0" src="photo-groom.jpg"
+        <img alt="Vishnu" class="couple-card-photo" id="cardPhoto0" src="photo-groom.jpg"
              style="object-position:30% top"/>
         <div class="polaroid-caption">
-          <span data-en="Vishnu Kumar" data-ml="വിഷ്ണു കുമാർ">Vishnu Kumar</span>
+          <span data-en="Vishnu" data-ml="വിഷ്ണു">Vishnu</span>
         </div>
       </div>
       <div class="couple-card-body">
         <div class="couple-card-note"
-          data-en="The groom. Vishnu Kumar, son of the late Kumaran and Nalini."
-          data-ml="വരൻ. വിഷ്ണു കുമാർ, അന്തരിച്ച കുമാരന്റെയും നളിനിയുടെയും മകൻ.">The groom. Vishnu Kumar, son of the late Kumaran and Nalini.</div>
+          data-en="The groom. Vishnu, son of the late Kumaran and Nalini."
+          data-ml="വരൻ. വിഷ്ണു, അന്തരിച്ച കുമാരന്റെയും നളിനിയുടെയും മകൻ.">The groom. Vishnu, son of the late Kumaran and Nalini.</div>
       </div>
     </div>
 
@@ -1802,19 +1819,19 @@ body.theme-western .cal-link{
 </section>
 <main>
 <section class="event-section active" id="event-kerala" role="tabpanel">
-<div class="chips">
-<span class="chip" data-en="Sunday, 1 November 2026" data-ml="ഞായർ, 1 നവംബർ 2026">Sunday, 1 November 2026</span>
-<span class="chip" data-en="Ceremony 11:00 AM" data-ml="ചടങ്ങ് 11:00 AM">Ceremony 11:00 AM</span>
-<span class="chip" data-en="Muhurtham 12:00 PM" data-ml="മുഹൂർത്തം 12:00 PM">Muhurtham 12:00 PM</span>
+<div class="date-muhurtham">
+<div class="dm-date" data-en="Sunday, 1 November 2026" data-ml="ഞായർ, 1 നവംബർ 2026">Sunday, 1 November 2026</div>
+<div class="dm-flourish"></div>
+<div class="dm-muhurtham-label" data-en="Muhurtham" data-ml="മുഹൂർത്തം">Muhurtham</div>
+<div class="dm-muhurtham-time">12:00 PM</div>
+<div class="dm-note" data-en="The auspicious moment" data-ml="ശുഭ മുഹൂർത്തം">The auspicious moment </div>
+<div class="countdown" id="countdown">
+<div class="cd-unit"><span class="cd-num" id="cdDays">00</span><span class="cd-label" data-en="Days" data-ml="ദിവസം">Days</span></div>
+<div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-label" data-en="Hrs" data-ml="മണിക്കൂർ">Hrs</span></div>
+<div class="cd-unit"><span class="cd-num" id="cdMins">00</span><span class="cd-label" data-en="Min" data-ml="മിനിറ്റ്">Min</span></div>
+<div class="cd-unit"><span class="cd-num" id="cdSecs">00</span><span class="cd-label" data-en="Sec" data-ml="സെക്കൻഡ്">Sec</span></div>
 </div>
-<button aria-expanded="false" class="timeline-toggle" onclick="toggleTimeline('tl-kerala',this)">
-<span class="toggle-icon"><svg viewbox="0 0 8 8"><path d="M4 0v8M0 4h8"></path></svg></span>
-<span data-en="View day schedule" data-ml="ദിവസ ഷെഡ്യൂൾ">View day schedule</span>
-</button>
-<div class="timeline-wrap" id="tl-kerala"><div class="timeline">
-<div class="tl-item"><div class="tl-dot"></div><div class="tl-body"><div class="tl-time">11:00 AM</div><div class="tl-event" data-en="Ceremony begins" data-ml="ചടങ്ങ് ആരംഭം">Ceremony begins</div><div class="tl-note" data-en="Traditional Kerala wedding rituals begin. Please be seated before this time." data-ml="ചടങ്ങ് ആരംഭിക്കുന്നു. ഇതിന് മുൻപ് ഇരിക്കണം.">Traditional Kerala wedding rituals begin. Please be seated before this time.</div></div></div>
-<div class="tl-item"><div class="tl-dot"></div><div class="tl-body"><div class="tl-time">12:00 PM</div><div class="tl-event" data-en="Muhurtham — exchange of garlands" data-ml="മുഹൂർത്തം — മാലമാറ്റം">Muhurtham — exchange of garlands</div><div class="tl-note" data-en="The auspicious moment. Chenda melam and nadaswaram." data-ml="ശുഭ മുഹൂർത്തം. ചെണ്ടമേളവും നാദസ്വരവും.">The auspicious moment. Chenda melam and nadaswaram.</div></div></div>
-</div></div>
+</div>
 <hr class="section-divider"/>
 <div class="venue-block">
 <div class="venue-label" data-en="Venue" data-ml="സ്ഥലം">Venue</div>
@@ -1837,6 +1854,24 @@ body.theme-western .cal-link{
 </div>
 </section>
 <hr class="section-divider"/>
+<section class="rsvp-section">
+<h3 class="sec-title" data-en="RSVP" data-ml="RSVP">RSVP</h3>
+<p class="sec-sub" data-en="Kindly let us know if you'll be joining us." data-ml="നിങ്ങൾ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കുക.">Kindly let us know if you'll be joining us.</p>
+<form class="rsvp-form" id="rsvpForm" onsubmit="submitRsvp(event)">
+<input id="rsvpName" maxlength="60" placeholder="Your name" required type="text"/>
+<input id="rsvpPhone" maxlength="15" placeholder="Phone number (optional)" type="tel"/>
+<div class="rsvp-toggle-row">
+<button class="rsvp-toggle" data-val="yes" onclick="setAttending(true)" type="button"><span data-en="✅ Joyfully accept" data-ml="✅ പങ്കെടുക്കും">✅ Joyfully accept</span></button>
+<button class="rsvp-toggle" data-val="no" onclick="setAttending(false)" type="button"><span data-en="❌ Regretfully decline" data-ml="❌ പങ്കെടുക്കാൻ കഴിയില്ല">❌ Regretfully decline</span></button>
+</div>
+<div class="rsvp-guests" id="rsvpGuestsWrap" style="display:none">
+<label data-en="Number of guests (including you)" data-ml="അതിഥികളുടെ എണ്ണം (നിങ്ങൾ ഉൾപ്പെടെ)" for="rsvpGuests">Number of guests (including you)</label>
+<input id="rsvpGuests" max="10" min="1" type="number" value="1"/>
+</div>
+<button class="action-btn primary rsvp-submit" id="rsvpSubmitBtn" type="submit"><span data-en="Send RSVP" data-ml="RSVP അയക്കുക">Send RSVP</span></button>
+</form>
+</section>
+<hr class="section-divider"/>
 <section class="contacts-section">
 <h3 class="sec-title" data-en="Need help getting there?" data-ml="സഹായം വേണോ?">Need help getting there?</h3>
 <p class="sec-sub" data-en="Reach the family directly." data-ml="നേരിട്ട് ബന്ധപ്പെടുക.">Reach the family directly.</p>
@@ -1850,7 +1885,7 @@ body.theme-western .cal-link{
 <p class="sec-sub" data-en="Leave a note — it'll show up here for everyone." data-ml="ഒരു സന്ദേശം ഇടൂ — എല്ലാവർക്കും ഇവിടെ കാണാം.">Leave a note — it'll show up here for everyone.</p>
 <form class="wish-form" id="wishForm" onsubmit="submitWish(event)">
 <input id="wishName" maxlength="40" placeholder="Your name" required type="text"/>
-<textarea id="wishMsg" maxlength="300" placeholder="Your wishes for Vishnu Kumar &amp; Sonya..." required></textarea>
+<textarea id="wishMsg" maxlength="300" placeholder="Your wishes for Vishnu &amp; Sonya..." required></textarea>
 <div class="wish-count"><span id="wishCharCount">0</span>/300</div>
 <button class="action-btn primary wish-submit" id="wishSubmitBtn" type="submit"><span data-en="Send wishes" data-ml="ആശംസകൾ അയക്കുക">Send wishes</span></button>
 </form>
@@ -1867,7 +1902,7 @@ body.theme-western .cal-link{
 </div>
 </section>
 </main>
-<footer><span data-en="Made with love for Vishnu Kumar &amp; Sonya · 2026" data-ml="വിഷ്ണു കുമാറിനും സോണ്യയ്ക്കും സ്നേഹത്തോടെ · 2026">Made with love for Vishnu Kumar &amp; Sonya · 2026</span></footer>
+<footer><span data-en="Made with love for Vishnu &amp; Sonya · 2026" data-ml="വിഷ്ണു കുമാറിനും സോണ്യയ്ക്കും സ്നേഹത്തോടെ · 2026">Made with love for Vishnu &amp; Sonya · 2026</span></footer>
 <script>
 /* ── State ── */
 const PW     = [100, 340, 605];
@@ -2000,12 +2035,33 @@ function tab(btn, id) {
 }
 
 /* ── Timeline ── */
-function toggleTimeline(id, btn) {
-  const w    = document.getElementById(id);
-  const open = w.classList.toggle('open');
-  btn.classList.toggle('open', open);
-  btn.setAttribute('aria-expanded', open);
+/* ── Countdown to muhurtham ── */
+function startCountdown() {
+  const target = new Date('2026-11-01T12:00:00+05:30').getTime();
+  const el = document.getElementById('countdown');
+  if (!el) return;
+  const dDays = document.getElementById('cdDays');
+  const dHours = document.getElementById('cdHours');
+  const dMins = document.getElementById('cdMins');
+  const dSecs = document.getElementById('cdSecs');
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      el.outerHTML = '<div class="dm-note" style="margin:0" data-en="The big day is here! 💛" data-ml="ഇന്നാണ് ആ ദിവസം! 💛">The big day is here! 💛</div>';
+      applyLang(lang);
+      clearInterval(timer);
+      return;
+    }
+    const s = Math.floor(diff / 1000);
+    dDays.textContent = String(Math.floor(s / 86400)).padStart(2, '0');
+    dHours.textContent = String(Math.floor((s % 86400) / 3600)).padStart(2, '0');
+    dMins.textContent = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
+    dSecs.textContent = String(s % 60).padStart(2, '0');
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
 }
+document.addEventListener('DOMContentLoaded', startCountdown);
 
 /* ── Toast / copy ── */
 function showToast(msg) {
@@ -2065,7 +2121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* WhatsApp share link */
   const wabtn = document.getElementById('wa-btn');
-  if (wabtn) wabtn.href = 'https://wa.me/?text='+encodeURIComponent("You're invited to Vishnu Kumar & Sonya's wedding! 💍 "+window.location.href);
+  if (wabtn) wabtn.href = 'https://wa.me/?text='+encodeURIComponent("You're invited to Vishnu & Sonya's wedding! 💍 "+window.location.href);
 
   /* deep link via URL hash */
   const hash  = window.location.hash.replace('#','').toLowerCase();
@@ -2096,7 +2152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script>
-/* ── Wishes wall (Firebase Firestore) ──
+/* ── Wishes wall + RSVP (Firebase Firestore) ──
    1. Create a free project at https://console.firebase.google.com
    2. Build → Firestore Database → Create database (start in production mode)
    3. Project settings → General → scroll to "Your apps" → Add app → Web (</>) → copy the config object below
@@ -2112,8 +2168,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             && request.resource.data.message.size() <= 300;
               allow update, delete: if false;
             }
+            match /rsvps/{rsvpId} {
+              allow read: if false;
+              allow create: if request.resource.data.name is string
+                            && request.resource.data.name.size() <= 60
+                            && request.resource.data.attending is bool
+                            && request.resource.data.guestCount is int
+                            && request.resource.data.guestCount >= 0
+                            && request.resource.data.guestCount <= 10;
+              allow update, delete: if false;
+            }
           }
         }
+   5. Already had rules set up before? Just add the "rsvps" block above
+      alongside your existing "wishes" block in Firestore → Rules, and
+      republish.
 */
 const firebaseConfig = {
   apiKey: "AIzaSyDzqxffHp-JYixYqhAk2VI8aqUohIZ7iw8",
@@ -2184,31 +2253,92 @@ function spawnEmojiBurst(originEl, count) {
 
 // Zoom-reaction style: a staggered stream of emojis floating up from near
 // the bottom of the screen, swaying gently, fading out before the top.
-const RISE_EMOJIS = ['❤️','💛','💕','💖','💗','💓','💞','🧡'];
+/* ── Floating hearts (vector, gradient-filled, smooth sine-wave sway) ── */
+const HEART_NS = 'http://www.w3.org/2000/svg';
+const HEART_PATH = 'M12,21.35c-.29 0-.57-.1-.79-.28C6.6,17.24,3,13.94,3,9.86 3,7.18,5.09,5,7.69,5c1.61,0,3.11.79,4.03,2.07C12.63,5.79,14.13,5,15.75,5 18.35,5,20.44,7.18,20.44,9.86c0,4.08-3.6,7.38-8.15,11.21C12.07,21.25,11.79,21.35,12,21.35z';
+const HEART_PALETTES = [
+  ['#ff8fae', '#c0233f'],
+  ['#ff5f6d', '#8b1a1a'],
+  ['#ffb3c6', '#e8425f'],
+];
+let _heartGradId = 0;
+
+function makeHeartEl(depth) {
+  const size = 14 + depth * 26;
+  const [c1, c2] = HEART_PALETTES[Math.floor(Math.random() * HEART_PALETTES.length)];
+  const id = 'hg' + (_heartGradId++);
+
+  const svg = document.createElementNS(HEART_NS, 'svg');
+  svg.setAttribute('width', size);
+  svg.setAttribute('height', size);
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.style.position = 'absolute';
+  svg.style.left = '0';
+  svg.style.top = '0';
+  svg.style.willChange = 'transform, opacity';
+  const blur = (1 - depth) * 1.1;
+  svg.style.filter = `drop-shadow(0 0 ${3 + depth * 3}px ${c2}66)` + (blur > 0.15 ? ` blur(${blur.toFixed(2)}px)` : '');
+
+  const defs = document.createElementNS(HEART_NS, 'defs');
+  const grad = document.createElementNS(HEART_NS, 'linearGradient');
+  grad.setAttribute('id', id);
+  grad.setAttribute('x1', '0%'); grad.setAttribute('y1', '0%');
+  grad.setAttribute('x2', '100%'); grad.setAttribute('y2', '100%');
+  const s1 = document.createElementNS(HEART_NS, 'stop');
+  s1.setAttribute('offset', '0%'); s1.setAttribute('stop-color', c1);
+  const s2 = document.createElementNS(HEART_NS, 'stop');
+  s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', c2);
+  grad.appendChild(s1); grad.appendChild(s2);
+  defs.appendChild(grad);
+
+  const path = document.createElementNS(HEART_NS, 'path');
+  path.setAttribute('d', HEART_PATH);
+  path.setAttribute('fill', `url(#${id})`);
+  path.setAttribute('opacity', (0.55 + depth * 0.35).toFixed(2));
+
+  svg.appendChild(defs);
+  svg.appendChild(path);
+  return svg;
+}
+
+function spawnHeart() {
+  const stage = document.getElementById('heartStage');
+  if (!stage) return;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const depth = Math.random();
+  const el = makeHeartEl(depth);
+
+  const weight = (Math.random() + Math.random() + Math.random()) / 3;
+  const startX = vw / 2 + (weight - 0.5) * vw * 0.95;
+  const startY = vh + 10 + Math.random() * vh * 0.12;
+  const riseDist = vh * (0.75 + Math.random() * 0.55) * (0.7 + depth * 0.5);
+  const duration = 6500 + Math.random() * 4000 - depth * 1200;
+  const swayAmp = 10 + Math.random() * 16;
+  const swayFreq = 0.5 + Math.random() * 0.6;
+  const swayPhase = Math.random() * Math.PI * 2;
+
+  stage.appendChild(el);
+  const start = performance.now();
+
+  function frame(now) {
+    const t = (now - start) / duration;
+    if (t >= 1) { el.remove(); return; }
+    const y = -t * riseDist;
+    const x = Math.sin(t * Math.PI * 2 * swayFreq + swayPhase) * swayAmp * Math.sin(t * Math.PI);
+    let op = 1;
+    if (t < 0.08) op = t / 0.08;
+    else if (t > 0.85) op = (1 - t) / 0.15;
+    el.style.transform = `translate(${startX + x}px, ${startY + y}px)`;
+    el.style.opacity = Math.max(0, Math.min(1, op)).toFixed(2);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
 function spawnEmojiRiseStream(originEl, count) {
-  if (!originEl) return;
-  const rect = originEl.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
   const n = count || 10;
-  const vh = window.innerHeight;
   for (let i = 0; i < n; i++) {
-    const el = document.createElement('span');
-    el.className = 'emoji-rise-particle';
-    el.textContent = RISE_EMOJIS[Math.floor(Math.random() * RISE_EMOJIS.length)];
-    const spread = (Math.random() - 0.5) * 90; // horizontal spread of launch point
-    const size = (0.85 + Math.random() * 1.15).toFixed(2) + 'rem';
-    const duration = (4500 + Math.random() * 2800).toFixed(0) + 'ms';
-    const delay = (Math.random() * 1400).toFixed(0) + 'ms';
-    // gentle overall drift to one side or the other — no back-and-forth
-    const x5 = ((Math.random() - 0.5) * 2 * 22).toFixed(0) + 'px';
-    el.style.setProperty('--x5', x5);
-    el.style.left = (cx + spread) + 'px';
-    el.style.top = vh + 'px';
-    el.style.fontSize = size;
-    el.style.animationDuration = duration;
-    el.style.animationDelay = delay;
-    document.body.appendChild(el);
-    el.addEventListener('animationend', () => el.remove());
+    setTimeout(spawnHeart, Math.random() * 900);
   }
 }
 
@@ -2265,7 +2395,7 @@ function initWishesWallCarousel() {
       } else {
         list.scrollLeft += 1;
       }
-    }, 30);
+    }, 45);
   }
   function stopAuto() {
     if (autoTimer) clearInterval(autoTimer);
@@ -2353,6 +2483,60 @@ async function submitWish(e) {
     document.getElementById('wishCharCount').textContent = '0';
     spawnEmojiRiseStream(btn, 12);
     showToast('Wishes sent! 💛');
+  } catch (err) {
+    console.error(err);
+    showToast('Could not send — try again');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+/* ── RSVP ── */
+let _rsvpAttending = null;
+function setAttending(val) {
+  _rsvpAttending = val;
+  document.querySelectorAll('.rsvp-toggle').forEach(b => {
+    b.classList.toggle('selected', (b.dataset.val === 'yes') === val);
+  });
+  document.getElementById('rsvpGuestsWrap').style.display = val ? 'flex' : 'none';
+}
+
+async function submitRsvp(e) {
+  e.preventDefault();
+  const nameEl = document.getElementById('rsvpName');
+  const phoneEl = document.getElementById('rsvpPhone');
+  const guestsEl = document.getElementById('rsvpGuests');
+  const btn = document.getElementById('rsvpSubmitBtn');
+  const name = nameEl.value.trim();
+  if (!name) return;
+  if (_rsvpAttending === null) {
+    showToast('Please choose whether you can make it');
+    return;
+  }
+  if (!_wishesDb) {
+    showToast('RSVP is not set up yet');
+    return;
+  }
+  const guestCount = _rsvpAttending ? Math.max(1, Math.min(10, parseInt(guestsEl.value, 10) || 1)) : 0;
+  btn.disabled = true;
+  try {
+    await _wishesDb.collection('rsvps').add({
+      name: name.slice(0, 60),
+      phone: phoneEl.value.trim().slice(0, 15),
+      attending: _rsvpAttending,
+      guestCount: guestCount,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    nameEl.value = '';
+    phoneEl.value = '';
+    guestsEl.value = '1';
+    if (_rsvpAttending) {
+      spawnEmojiRiseStream(btn, 6);
+      showToast("Thank you — we can't wait to see you! 💛");
+    } else {
+      showToast("Thanks for letting us know — you'll be missed 💛");
+    }
+    setAttending(null);
   } catch (err) {
     console.error(err);
     showToast('Could not send — try again');
