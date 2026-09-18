@@ -614,7 +614,8 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .wishes-list{display:flex;gap:0.85rem;max-width:100%;margin:0 auto;text-align:left;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0.2rem 1rem 0.6rem;cursor:grab}
 .wishes-list::-webkit-scrollbar{display:none}
 .wishes-list.dragging{cursor:grabbing;scroll-snap-type:none}
-.wish-card{position:relative;background:var(--surface);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:0.9rem 1.1rem;transition:background var(--dur),border-color var(--dur);animation:fadeUp 0.4s var(--ease);flex:0 0 auto;width:min(78vw,320px);scroll-snap-align:start}
+.wish-card{position:relative;background:var(--surface);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:12px;padding:0.9rem 1.1rem;transition:background var(--dur),border-color var(--dur);animation:fadeUp 0.4s var(--ease),wishBreathe 4.5s ease-in-out infinite;flex:0 0 auto;width:min(78vw,320px);scroll-snap-align:start}
+@keyframes wishBreathe{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}50%{box-shadow:0 0 14px 2px rgba(201,168,76,0.28)}}
 .wish-card.new-wish{animation:wishPopIn 0.7s var(--ease)}
 .wish-emoji-tag{display:inline-block;margin-left:0.3rem;animation:emojiBounceIn 0.5s var(--ease) 0.2s backwards}
 @keyframes wishPopIn{0%{opacity:0;transform:scale(0.82) translateY(14px)}55%{opacity:1;transform:scale(1.04) translateY(-3px);box-shadow:0 0 0 2px var(--gold)}100%{transform:scale(1) translateY(0);box-shadow:0 0 0 0 transparent}}
@@ -630,6 +631,16 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .wish-msg{font-family:var(--ff-ital);font-size:1.08rem;line-height:1.6;color:var(--ink);white-space:pre-wrap;word-break:break-word}
 .wish-time{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-top:0.4rem}
 .wishes-empty,.wishes-loading{font-family:var(--ff-ital);font-style:italic;color:var(--ink2);font-size:0.92rem;padding:1rem 0}
+.spotlight{position:relative;min-height:150px;display:flex;align-items:center;justify-content:center;max-width:480px;margin:0 auto}
+.spotlight-quote{position:absolute;top:-0.4rem;left:50%;transform:translateX(-50%);font-family:var(--ff-display);font-size:3rem;color:var(--gold);opacity:0.5;line-height:1}
+.spotlight-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1.2rem 0;opacity:0;transition:opacity 0.6s var(--ease)}
+.spotlight-card.active{opacity:1;position:relative}
+.spotlight-msg{font-family:var(--ff-ital);font-style:italic;font-size:1.15rem;line-height:1.6;color:var(--ink)}
+.spotlight-name{font-family:var(--ff-display);font-weight:600;font-size:1.02rem;color:var(--primary);margin-top:0.9rem}
+.spotlight-dots{display:flex;justify-content:center;gap:0.4rem;margin-top:0.6rem}
+.spotlight-dots .dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background 0.3s,transform 0.3s}
+.spotlight-dots .dot.active{background:var(--gold);transform:scale(1.4)}
+.wishes-section .btn-row{display:flex;gap:0.6rem;justify-content:center;margin-top:1.4rem;flex-wrap:wrap}
 footer{text-align:center;padding:1.75rem 1.5rem;font-family:var(--ff-ital);font-style:italic;font-size:0.85rem;color:var(--ink2);border-top:1px solid var(--border);transition:color var(--dur),border-color var(--dur)}
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(3rem);background:var(--primary);color:#fff;padding:0.45rem 1.3rem;border-radius:100px;font-size:0.88rem;opacity:0;pointer-events:none;z-index:999;transition:transform 0.3s,opacity 0.3s,background var(--dur)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
@@ -1927,8 +1938,16 @@ body.theme-western .cal-link{
 
 <section class="wishes-section">
 <h3 class="sec-title" data-en="Wishes for the couple" data-ml="ദമ്പതികൾക്ക് ആശംസകൾ">Wishes for the couple</h3>
-<p class="sec-sub" data-en="Leave a note — it'll show up here for everyone." data-ml="ഒരു സന്ദേശം ഇടൂ — എല്ലാവർക്കും ഇവിടെ കാണാം.">Leave a note — it'll show up here for everyone.</p>
-<button class="action-btn primary" onclick="openModal('wishesModal')" type="button"><span data-en="View &amp; send wishes" data-ml="ആശംസകൾ കാണുക / അയക്കുക">View &amp; send wishes</span></button>
+<p class="sec-sub" data-en="Messages from friends and family, so far" data-ml="ഇതുവരെയുള്ള ആശംസകൾ">Messages from friends and family, so far</p>
+<div class="spotlight">
+<div class="spotlight-quote">&quot;</div>
+<div id="spotlightStage"></div>
+</div>
+<div class="spotlight-dots" id="spotlightDots"></div>
+<div class="btn-row">
+<button class="action-btn primary" onclick="openWishesModal(true)" type="button"><span data-en="Leave your own wish" data-ml="നിങ്ങളുടെ ആശംസ അയക്കുക">Leave your own wish</span></button>
+<button class="action-btn" onclick="openWishesModal(false)" type="button"><span data-en="See all wishes" data-ml="എല്ലാ ആശംസകളും കാണുക">See all wishes</span></button>
+</div>
 </section>
 <div class="invite-modal" id="wishesModal" onclick="if(event.target===this) closeModal('wishesModal')">
 <div class="invite-modal-inner wishes-modal-inner">
@@ -2551,18 +2570,23 @@ function attemptAutoplayMusic() {
   const btn = document.getElementById('musicToggle');
   if (!audio || !btn) return;
   audio.volume = 0.45;
-  const p = audio.play();
-  if (p && p.then) {
-    p.then(() => btn.classList.add('playing')).catch(() => {
-      const startOnInteraction = () => {
-        audio.play().then(() => btn.classList.add('playing')).catch(() => {});
-        document.removeEventListener('click', startOnInteraction);
-        document.removeEventListener('touchstart', startOnInteraction);
-      };
-      document.addEventListener('click', startOnInteraction, { once: true });
-      document.addEventListener('touchstart', startOnInteraction, { once: true });
-    });
+
+  function tryPlay() {
+    audio.play().then(() => btn.classList.add('playing')).catch(() => {});
   }
+
+  tryPlay(); // works in a few contexts right away; harmless if blocked
+
+  // Always arm this too, regardless of whether the immediate attempt
+  // above succeeded or failed: the very first tap/click/keypress anywhere
+  // on the page will (re)attempt playback. This is what actually satisfies
+  // the browser's "needs a user gesture" requirement on phones.
+  const events = ['click', 'touchstart', 'touchend', 'keydown', 'pointerdown'];
+  function onFirstInteraction() {
+    tryPlay();
+    events.forEach(ev => document.removeEventListener(ev, onFirstInteraction));
+  }
+  events.forEach(ev => document.addEventListener(ev, onFirstInteraction, { once: true, passive: true }));
 }
 document.addEventListener('DOMContentLoaded', attemptAutoplayMusic);
 
@@ -2596,6 +2620,57 @@ function renderWishes(docs) {
   if (!isFirstLoad && newIds.length) {
     const title = document.querySelector('.wishes-section .sec-title');
     spawnEmojiRiseStream(title, Math.min(6, 4 + newIds.length));
+  }
+}
+
+/* ── Inline spotlight: rotates through wishes automatically, always visible ── */
+let _spotlightWishes = [];
+let _spotlightIndex = 0;
+let _spotlightTimer = null;
+
+function renderSpotlightData(docs) {
+  _spotlightWishes = docs.map(d => {
+    const data = d.data();
+    return { name: data.name || 'Anonymous', message: data.message || '', emoji: emojiForId(d.id) };
+  });
+  if (_spotlightIndex >= _spotlightWishes.length) _spotlightIndex = 0;
+  drawSpotlight();
+  if (!_spotlightTimer && _spotlightWishes.length > 1) {
+    _spotlightTimer = setInterval(() => {
+      _spotlightIndex = (_spotlightIndex + 1) % _spotlightWishes.length;
+      drawSpotlight();
+    }, 4200);
+  }
+}
+
+function drawSpotlight() {
+  const stage = document.getElementById('spotlightStage');
+  const dotsWrap = document.getElementById('spotlightDots');
+  if (!stage || !dotsWrap) return;
+  if (!_spotlightWishes.length) {
+    stage.innerHTML = '<div class="wishes-empty" data-en="Be the first to leave a wish 💌" data-ml="ആദ്യം ആശംസിക്കൂ 💌">Be the first to leave a wish 💌</div>';
+    dotsWrap.innerHTML = '';
+    applyLang(lang);
+    return;
+  }
+  stage.innerHTML = _spotlightWishes.map((w, i) => (
+    '<div class="spotlight-card' + (i === _spotlightIndex ? ' active' : '') + '">'
+    + '<div class="spotlight-msg">' + escapeHtml(w.message) + '</div>'
+    + '<div class="spotlight-name">' + escapeHtml(w.name) + ' ' + w.emoji + '</div>'
+    + '</div>'
+  )).join('');
+  dotsWrap.innerHTML = _spotlightWishes.map((_, i) =>
+    '<span class="dot' + (i === _spotlightIndex ? ' active' : '') + '"></span>'
+  ).join('');
+}
+
+function openWishesModal(focusForm) {
+  openModal('wishesModal');
+  if (focusForm) {
+    setTimeout(() => {
+      const nameEl = document.getElementById('wishName');
+      if (nameEl) nameEl.focus();
+    }, 350);
   }
 }
 
@@ -2672,11 +2747,14 @@ function initWishesWall() {
   initWishesWallCarousel();
   if (!_wishesDb) {
     if (list) list.innerHTML = '<div class="wishes-empty">Wishes wall isn\'t connected yet — add a Firebase config to enable it.</div>';
+    const stage = document.getElementById('spotlightStage');
+    if (stage) stage.innerHTML = '<div class="wishes-empty">Wishes wall isn\'t connected yet.</div>';
     return;
   }
   _wishesDb.collection('wishes').orderBy('createdAt', 'desc').limit(100)
     .onSnapshot(snapshot => {
       renderWishes(snapshot.docs);
+      renderSpotlightData(snapshot.docs);
     }, err => {
       console.error(err);
       if (list) list.innerHTML = '<div class="wishes-empty">Couldn\'t load wishes right now.</div>';
