@@ -638,7 +638,7 @@ main{max-width:680px;margin:0 auto;padding:0 1.5rem}
 .spotlight-msg{font-family:var(--ff-ital);font-style:italic;font-size:1.15rem;line-height:1.6;color:var(--ink)}
 .spotlight-name{font-family:var(--ff-display);font-weight:600;font-size:1.02rem;color:var(--primary);margin-top:0.9rem}
 .spotlight-dots{display:flex;justify-content:center;gap:0.4rem;margin-top:0.6rem}
-.spotlight-dots .dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background 0.3s,transform 0.3s}
+.spotlight-dots .dot{width:9px;height:9px;border-radius:50%;background:var(--border);transition:background 0.3s,transform 0.3s;cursor:pointer;touch-action:manipulation}
 .spotlight-dots .dot.active{background:var(--gold);transform:scale(1.4)}
 .wishes-section .btn-row{display:flex;gap:0.6rem;justify-content:center;margin-top:1.4rem;flex-wrap:wrap}
 footer{text-align:center;padding:1.75rem 1.5rem;font-family:var(--ff-ital);font-style:italic;font-size:0.85rem;color:var(--ink2);border-top:1px solid var(--border);transition:color var(--dur),border-color var(--dur)}
@@ -1789,7 +1789,7 @@ body.theme-western .cal-link{
 <body class="theme-kerala">
 <svg id="heartStage" xmlns="http://www.w3.org/2000/svg"></svg>
 <svg id="petalStage" xmlns="http://www.w3.org/2000/svg"></svg>
-<audio id="bgMusic" loop preload="none">
+<audio id="bgMusic" loop preload="auto">
 <source src="background-music.mp3" type="audio/mpeg"/>
 </audio>
 <button aria-label="Toggle background music" class="music-toggle" id="musicToggle" onclick="toggleMusic()" type="button"><span class="m-icon">🎵</span></button>
@@ -1869,7 +1869,7 @@ body.theme-western .cal-link{
 <div class="dm-date" data-en="Sunday, 1 November 2026" data-ml="ഞായർ, 1 നവംബർ 2026">Sunday, 1 November 2026</div>
 <div class="dm-flourish"></div>
 <div class="dm-muhurtham-label" data-en="Muhurtham" data-ml="മുഹൂർത്തം">Muhurtham</div>
-<div class="dm-muhurtham-time">12:00 PM</div>
+<div class="dm-muhurtham-time">12:00 – 12:50 PM</div>
 <div class="dm-note" data-en="The auspicious moment." data-ml="ശുഭ മുഹൂർത്തം.">The auspicious moment.</div>
 <div class="countdown" id="countdown">
 <div class="cd-unit"><span class="cd-num" id="cdDays">00</span><span class="cd-label" data-en="Days" data-ml="ദിവസം">Days</span></div>
@@ -1886,7 +1886,7 @@ body.theme-western .cal-link{
 <div class="venue-actions">
 <a class="action-btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Kariyad+CH+Moidu+Master+Auditorium,+Kariyad,+Thalassery,+Kannur" rel="noopener" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span data-en="Open in Maps" data-ml="മാപ്പ് തുറക്കുക">Open in Maps</span></a>
 <button class="action-btn" onclick="copyText('Kariyad CH Moidu Master Auditorium, Kariyad, Thalassery, Kannur')"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="13" rx="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg><span data-en="Copy address" data-ml="വിലാസം കോപ്പി">Copy address</span></button>
-<a class="cal-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20%E2%80%94%20Vishnu%20Kumar%20%26%20Sonya&amp;location=Kariyad%20CH%20Moidu%20Master%20Auditorium%2C%20Kariyad%2C%20Thalassery%2C%20Kannur&amp;dates=20261101T080000/20261101T150000" rel="noopener" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg><span data-en="Add to calendar" data-ml="കലണ്ടറിൽ ചേർക്കുക">Add to calendar</span></a>
+<a class="cal-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wedding%20%E2%80%94%20Vishnu%20%26%20Sonya&amp;location=Kariyad%20CH%20Moidu%20Master%20Auditorium%2C%20Kariyad%2C%20Thalassery%2C%20Kannur&amp;dates=20261101T110000/20261101T140000&amp;ctz=Asia%2FKolkata" rel="noopener" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px" viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg><span data-en="Add to calendar" data-ml="കലണ്ടറിൽ ചേർക്കുക">Add to calendar</span></a>
 </div>
 </div>
 <div class="transport-block">
@@ -1911,7 +1911,7 @@ body.theme-western .cal-link{
 <hr class="section-divider"/>
 <section class="rsvp-section">
 <h3 class="sec-title" data-en="RSVP" data-ml="RSVP">RSVP</h3>
-<p class="sec-sub" data-en="Kindly let us know if you'll be joining us." data-ml="നിങ്ങൾ പങ്കെടുക്കുമോ എന്ന് അറിയിക്കുക.">Kindly let us know if you'll be joining us.</p>
+<p class="sec-sub" data-en="kindly let us know if you'll be joining us." data-ml="നിങ്ങൾ പങ്കെടുക്കുമോ എന്ന് ഞങ്ങളെ അറിയിക്കുക."Kindly let us know if you'll be joining us.</p>
 <button class="action-btn primary rsvp-open-btn" onclick="openModal('rsvpModal')" type="button"><span data-en="Open RSVP" data-ml="RSVP തുറക്കുക">Open RSVP</span></button>
 </section>
 <div class="invite-modal" id="rsvpModal" onclick="if(event.target===this) closeModal('rsvpModal')">
@@ -2570,23 +2570,30 @@ function attemptAutoplayMusic() {
   const btn = document.getElementById('musicToggle');
   if (!audio || !btn) return;
   audio.volume = 0.45;
+  audio.load(); // make sure it's actually ready to play the instant we try
 
+  let started = false;
   function tryPlay() {
-    audio.play().then(() => btn.classList.add('playing')).catch(() => {});
+    if (started) return;
+    audio.play().then(() => {
+      started = true;
+      btn.classList.add('playing');
+      stopListening();
+    }).catch(() => { /* still blocked — keep listening, try again next interaction */ });
   }
 
   tryPlay(); // works in a few contexts right away; harmless if blocked
 
-  // Always arm this too, regardless of whether the immediate attempt
-  // above succeeded or failed: the very first tap/click/keypress anywhere
-  // on the page will (re)attempt playback. This is what actually satisfies
-  // the browser's "needs a user gesture" requirement on phones.
+  // Keep retrying on every interaction (not just the first one) until it
+  // actually succeeds — a single blocked attempt should not use up our
+  // only chance, since some browsers reject the first try for reasons
+  // unrelated to the gesture itself (audio not yet decoded, etc).
   const events = ['click', 'touchstart', 'touchend', 'keydown', 'pointerdown'];
-  function onFirstInteraction() {
-    tryPlay();
-    events.forEach(ev => document.removeEventListener(ev, onFirstInteraction));
+  function onInteraction() { tryPlay(); }
+  function stopListening() {
+    events.forEach(ev => document.removeEventListener(ev, onInteraction));
   }
-  events.forEach(ev => document.addEventListener(ev, onFirstInteraction, { once: true, passive: true }));
+  events.forEach(ev => document.addEventListener(ev, onInteraction, { passive: true }));
 }
 document.addEventListener('DOMContentLoaded', attemptAutoplayMusic);
 
@@ -2627,6 +2634,7 @@ function renderWishes(docs) {
 let _spotlightWishes = [];
 let _spotlightIndex = 0;
 let _spotlightTimer = null;
+let _spotlightResumeTimer = null;
 
 function renderSpotlightData(docs) {
   _spotlightWishes = docs.map(d => {
@@ -2635,12 +2643,40 @@ function renderSpotlightData(docs) {
   });
   if (_spotlightIndex >= _spotlightWishes.length) _spotlightIndex = 0;
   drawSpotlight();
-  if (!_spotlightTimer && _spotlightWishes.length > 1) {
-    _spotlightTimer = setInterval(() => {
-      _spotlightIndex = (_spotlightIndex + 1) % _spotlightWishes.length;
-      drawSpotlight();
-    }, 4200);
+  startSpotlightAuto();
+}
+
+function startSpotlightAuto() {
+  stopSpotlightAuto();
+  if (_spotlightWishes.length > 1) {
+    _spotlightTimer = setInterval(spotlightNext, 4200);
   }
+}
+function stopSpotlightAuto() {
+  if (_spotlightTimer) clearInterval(_spotlightTimer);
+  _spotlightTimer = null;
+}
+// pause auto-rotation briefly after a manual swipe/tap, then resume on its own
+function spotlightPauseThenResume() {
+  stopSpotlightAuto();
+  if (_spotlightResumeTimer) clearTimeout(_spotlightResumeTimer);
+  _spotlightResumeTimer = setTimeout(startSpotlightAuto, 6000);
+}
+
+function spotlightNext() {
+  if (!_spotlightWishes.length) return;
+  _spotlightIndex = (_spotlightIndex + 1) % _spotlightWishes.length;
+  drawSpotlight();
+}
+function spotlightPrev() {
+  if (!_spotlightWishes.length) return;
+  _spotlightIndex = (_spotlightIndex - 1 + _spotlightWishes.length) % _spotlightWishes.length;
+  drawSpotlight();
+}
+function spotlightGoTo(i) {
+  if (!_spotlightWishes.length) return;
+  _spotlightIndex = i;
+  drawSpotlight();
 }
 
 function drawSpotlight() {
@@ -2660,9 +2696,33 @@ function drawSpotlight() {
     + '</div>'
   )).join('');
   dotsWrap.innerHTML = _spotlightWishes.map((_, i) =>
-    '<span class="dot' + (i === _spotlightIndex ? ' active' : '') + '"></span>'
+    '<span class="dot' + (i === _spotlightIndex ? ' active' : '') + '" onclick="spotlightPauseThenResume();spotlightGoTo(' + i + ')"></span>'
   ).join('');
 }
+
+function initSpotlightSwipe() {
+  const stage = document.getElementById('spotlightStage');
+  if (!stage) return;
+  let startX = 0, startY = 0, tracking = false;
+  stage.addEventListener('touchstart', (e) => {
+    if (!e.touches || !e.touches[0]) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    tracking = true;
+  }, { passive: true });
+  stage.addEventListener('touchend', (e) => {
+    if (!tracking || !e.changedTouches || !e.changedTouches[0]) return;
+    tracking = false;
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    // only treat it as a swipe if it's more horizontal than vertical, and long enough
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      spotlightPauseThenResume();
+      if (dx < 0) spotlightNext(); else spotlightPrev();
+    }
+  }, { passive: true });
+}
+document.addEventListener('DOMContentLoaded', initSpotlightSwipe);
 
 function openWishesModal(focusForm) {
   openModal('wishesModal');
